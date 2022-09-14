@@ -44,6 +44,35 @@ void SearchNumber(){
     }
     printf("검색 결과가 없습니다.\n");
 }
+
+void DeleteNumber(){
+    char str[30];
+    printf("삭제할 이름 입력 : ");
+    scanf("%s",str);
+    for(int i=0;i<idx;i++){
+        if(strcmp(arr[i].name,str) == 0){            
+            for(int j=i;j<idx-1;j++)
+                arr[j] = arr[j+1];
+            idx--;
+            return;
+        }
+    }
+    printf("삭제할 데이터가 없습니다.\n");
+}
+void UpdateNumber(){
+    char str[30];
+    printf("수정할 이름 입력 : ");
+    scanf("%s",str);
+    for(int i=0;i<idx;i++){
+        if(strcmp(arr[i].name,str) == 0){
+            printf("번호 입력 : ");
+            scanf(" %s",arr[i].phone);
+            printf("수정 완료");
+            return;
+        }
+    }
+    printf("검색 결과가 없습니다.\n");
+}
 int main(void){
 int no = -1;
 
@@ -63,6 +92,12 @@ int no = -1;
                 break;
             case SEARCH:
                 SearchNumber();
+                break;
+            case DELETE:
+                DeleteNumber();
+                break;
+            case UPDATE:
+                UpdateNumber();
                 break;
         }
     }
